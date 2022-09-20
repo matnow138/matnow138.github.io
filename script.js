@@ -1,6 +1,6 @@
 $(document).ready(function() {
 const apiRoot = 'https://mateusz-crud.herokuapp.com/v1/tasks';
-const trelloApiRoot = 'https://api.trello.com/1';
+const trelloApiRoot = 'https://api.trello.com/1/members';
 const datatableRowTemplate = $('[data-datatablerow-template]').children()[0];
 const $tasksContainer = $('[data-taskscontainer]');
 var availableBoards = {};
