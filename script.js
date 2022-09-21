@@ -9,7 +9,7 @@ var availableTasks = {};
 getAllTasks();
 function getAllAvailableBoards(callback,
 callbackArgs) {
-var requestUrl = trelloApiRoot + '/boards';
+var requestUrl = apiRoot + '/boards';
 $.ajax({
 url: requestUrl,
 method: 'GET',
