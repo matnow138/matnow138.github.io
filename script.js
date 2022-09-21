@@ -14,6 +14,8 @@ $(document).ready(function () {
         $.ajax({
             url: requestUrl,
             method: 'GET',
+            crossDomain: true,
+            dataType: 'jsonp',
             contentType: 'application/json',
             success: function (boards) {
                 callback(callbackArgs, boards);
