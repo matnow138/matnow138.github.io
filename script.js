@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    const apiRoot = 'https://mateusz-crud.herokuapp.com/v1/trello';
+    const apiRoot = 'https://mateusz-crud.herokuapp.com/v1/tasks';
     const trelloApiRoot = 'https://api.trello.com/1/members/mateuszpnowak';
     const datatableRowTemplate = $('[data-datatablerow-template]').children()[0];
     const $tasksContainer = $('[data-taskscontainer]');
