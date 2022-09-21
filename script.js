@@ -10,12 +10,10 @@ $(document).ready(function () {
 
     function getAllAvailableBoards(callback,
                                    callbackArgs) {
-        var requestUrl = trelloApiRoot + '/boards';
+        var requestUrl = trelloApiRoot + '/boards?key=49c54ec8c99ac758df4e4b97cc6000c7&token=fd00d814c2187b7184318152568aa5879c9b394649d4471573d07dcfda094a75';
         $.ajax({
             url: requestUrl,
             method: 'GET',
-            crossDomain: true,
-            dataType: 'jsonp',
             contentType: 'application/json',
             success: function (boards) {
                 callback(callbackArgs, boards);
