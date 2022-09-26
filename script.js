@@ -18,9 +18,7 @@ $(document).ready(function () {
             url: requestUrl,
             method: 'GET',
             contentType: 'application/json',
-            success: function (boards) {
-                callback(callbackArgs, boards);
-            }
+            success: function(boards) { callback(callbackArgs, boards); }
         });
     }
 
@@ -38,7 +36,7 @@ $(document).ready(function () {
     }
 
     function prepareBoardOrListSelectOptions(availableChoices) {
-        return availableChoices.map(function (choice) {
+        return availableChoices.map(function(choice) {
             return $('<option>')
                 .addClass('crud-select__option')
                 .val(choice.id)
@@ -52,7 +50,7 @@ $(document).ready(function () {
             availableBoards[board.id] = board;
         });
 
-        taskData.forEach(function (task) {
+        taskData.forEach(function(task) {
             var $datatableRowEl = createElement(task);
             var $availableBoardsOptionElements = prepareBoardOrListSelectOptions(boards);
 
@@ -71,7 +69,7 @@ $(document).ready(function () {
             url: requestUrl,
             method: 'GET',
             contentType: "application/json",
-            success: function (tasks) {
+            success: function(tasks) {
                 tasks.forEach(task => {
                     availableTasks[task.id] = task;
                 });
@@ -99,7 +97,7 @@ $(document).ready(function () {
                 title: taskTitle,
                 content: taskContent
             }),
-            success: function (data) {
+            success: function(data) {
                 parentEl.attr('data-task-id', data.id).toggleClass('datatable__row--editing');
                 parentEl.find('[data-task-name-paragraph]').text(taskTitle);
                 parentEl.find('[data-task-content-paragraph]').text(taskContent);
@@ -115,10 +113,8 @@ $(document).ready(function () {
         $.ajax({
             url: requestUrl + '/' + taskId,
             method: 'DELETE',
-            success: function () {
-                parentEl.slideUp(400, function () {
-                    parentEl.remove();
-                });
+            success: function() {
+                parentEl.slideUp(400, function() { parentEl.remove(); });
             }
         })
     }
@@ -141,7 +137,7 @@ $(document).ready(function () {
                 title: taskTitle,
                 content: taskContent
             }),
-            complete: function (data) {
+            complete: function(data) {
                 if (data.status === 200) {
                     getAllTasks();
                 }
@@ -192,7 +188,7 @@ $(document).ready(function () {
                 description: relatedTask.content,
                 listId: selectedListId
             }),
-            success: function (data) {
+            success: function(data) {
                 console.log('Card created - ' + data.shortUrl);
                 alert('Card created - ' + data.shortUrl);
             }
@@ -201,10 +197,10 @@ $(document).ready(function () {
 
     $('[data-task-add-form]').on('submit', handleTaskSubmitRequest);
 
-    $tasksContainer.on('change', '[data-board-name-select]', handleBoardNameSelect);
-    $tasksContainer.on('click', '[data-trello-card-creation-trigger]', handleCardCreationRequest);
-    $tasksContainer.on('click', '[data-task-edit-button]', toggleEditingState);
-    $tasksContainer.on('click', '[data-task-edit-abort-button]', toggleEditingState);
-    $tasksContainer.on('click', '[data-task-submit-update-button]', handleTaskUpdateRequest);
-    $tasksContainer.on('click', '[data-task-delete-button]', handleTaskDeleteRequest);
-}
+    $tasksContainer.on('change','[data-board-name-select]', handleBoardNameSelect);
+    $tasksContainer.on('click','[data-trello-card-creation-trigger]', handleCardCreationRequest);
+    $tasksContainer.on('click','[data-task-edit-button]', toggleEditingState);
+    $tasksContainer.on('click','[data-task-edit-abort-button]', toggleEditingState);
+    $tasksContainer.on('click','[data-task-submit-update-button]', handleTaskUpdateRequest);
+    $tasksContainer.on('click','[data-task-delete-button]', handleTaskDeleteRequest);
+});
